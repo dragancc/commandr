@@ -390,7 +390,8 @@ class Commandr(object):
           self._AddOption(args, dest=arg, action='store_false',
                       default=True)
         elif isinstance(defaults_dict[arg], list):
-          self._AddOption(args, dest=arg, action='append', type='string')
+          self._AddOption(args, dest=arg, action='append', 
+                      type='string', default=defaults_dict[arg])
         else:
           if isinstance(defaults_dict[arg], int):
             arg_type = 'int'
