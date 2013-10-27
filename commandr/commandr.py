@@ -137,7 +137,7 @@ class Commandr(object):
 
     # Mapping of all command names to the respective command function.
     self.parser = None
-	self.parser_class = parser_class
+    self.parser_class = parser_class
     self._all_commands = {}
 
     # List of commands in the order they appeared, of the format:
@@ -394,7 +394,7 @@ class Commandr(object):
           self._AddOption(args, dest=arg, action='store_false',
                       default=True)
         elif isinstance(defaults_dict[arg], list):
-          self._AddOption(args, dest=arg, action='append', 
+          self._AddOption(args, dest=arg, action='append',
                       type='string', default=defaults_dict[arg])
         else:
           if isinstance(defaults_dict[arg], int):
