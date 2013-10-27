@@ -125,7 +125,7 @@ import sys
 class Commandr(object):
   """Class for managing commandr context."""
 
-  def __init__(self, parser=None):
+  def __init__(self, parser_class=None):
     """Initializes a Commmandr Object """
     self.hyphenate = True
     self.hidden = True
@@ -136,7 +136,8 @@ class Commandr(object):
     self.no_command_arg = True
 
     # Mapping of all command names to the respective command function.
-    self.parser = parser
+    self.parser = None
+	self.parser_class = parser_class
     self._all_commands = {}
 
     # List of commands in the order they appeared, of the format:
@@ -355,8 +356,10 @@ class Commandr(object):
     usage = 'Usage: %prog command [options]\n' + \
         'Options without default values MUST be specified'
 
-	if not self.parser:
+	if not self.parser_class:
 		self.parser = OptionParser(usage=usage, add_help_option=False)
+	else:
+		self.parser = self.parser_class(usage=usage, add_help_option=False)
 
     self._AddOption(['-h', '--help'], dest='help', action='store_true',
                      default=False)
