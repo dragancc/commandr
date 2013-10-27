@@ -125,7 +125,7 @@ import sys
 class Commandr(object):
   """Class for managing commandr context."""
 
-  def __init__(self, parser=None):
+  def __init__(self):
     """Initializes a Commmandr Object """
     self.hyphenate = True
     self.hidden = True
@@ -136,7 +136,7 @@ class Commandr(object):
     self.no_command_arg = True
 
     # Mapping of all command names to the respective command function.
-    self.parser = parser
+    self.parser = None
     self._all_commands = {}
 
     # List of commands in the order they appeared, of the format:
@@ -175,6 +175,14 @@ class Commandr(object):
       return command_decorator(cmd_func, cmd_func.func_name)
 
     return command_decorator
+
+	@property
+    def parser(self):
+        return parser
+
+    @parser.setter
+    def parser(self, parser):
+		self.parser = parser
 
   def SetOptions(self,
       hyphenate=None,
