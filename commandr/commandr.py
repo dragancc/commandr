@@ -356,10 +356,10 @@ class Commandr(object):
     usage = 'Usage: %prog command [options]\n' + \
         'Options without default values MUST be specified'
 
-	if not self.parser_class:
-		self.parser = OptionParser(usage=usage, add_help_option=False)
-	else:
-		self.parser = self.parser_class(usage=usage, add_help_option=False)
+    if not self.parser_class:
+        self.parser = OptionParser(usage=usage, add_help_option=False)
+    else:
+        self.parser = self.parser_class(usage=usage, add_help_option=False)
 
     self._AddOption(['-h', '--help'], dest='help', action='store_true',
                      default=False)
